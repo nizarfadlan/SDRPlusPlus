@@ -22,12 +22,12 @@ cp -R root/res/* $BUNDLE/Contents/Resources/
 bundle_create_icns root/res/icons/sdrpp.macos.png $BUNDLE/Contents/Resources/sdrpp
 
 # Create the property list
-bundle_create_plist sdrpp SDR++ org.sdrpp.sdrpp 1.1.0 sdrp sdrpp sdrpp $BUNDLE/Contents/Info.plist
+bundle_create_plist sista SISTA org.sista.sista 1.1.0 sdrp sista sista $BUNDLE/Contents/Info.plist
 
 # ========================= Install binaries =========================
 
 # Core
-bundle_install_binary $BUNDLE $BUNDLE/Contents/MacOS $BUILD_DIR/sdrpp 
+bundle_install_binary $BUNDLE $BUNDLE/Contents/MacOS $BUILD_DIR/sdrpp
 bundle_install_binary $BUNDLE $BUNDLE/Contents/Frameworks $BUILD_DIR/core/libsdrpp_core.dylib
 
 # Source modules
