@@ -271,10 +271,19 @@ jobs:
               path: ${{runner.workspace}}/sista_debian_amd64.deb
 
     build_raspios_bullseye_armhf:
-        runs-on: ARM
+        runs-on: ubuntu-latest
 
         steps:
         - uses: actions/checkout@v3
+
+        - name: Set up QEMU
+          uses: docker/setup-qemu-action@v1
+
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v1
+
+        - name: Set up Raspberry Pi
+          uses: SamYStudiO/setup-raspberrypi@v1
 
         - name: Create Build Environment
           run: rm -rf ${{runner.workspace}}/build && cmake -E make_directory ${{runner.workspace}}/build
