@@ -276,6 +276,11 @@ jobs:
         steps:
         - uses: actions/checkout@v3
 
+        - uses: pguyot/arm-runner-action@v2
+          id: build_image
+          with:
+            base_image: raspios_lite:latest
+
         - name: Create Build Environment
           run: rm -rf ${{runner.workspace}}/build && cmake -E make_directory ${{runner.workspace}}/build
 
