@@ -14,7 +14,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "audio_source",
-    /* Description:     */ "Audio source module for SDR++",
+    /* Description:     */ "Audio source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -57,7 +57,7 @@ public:
         }
         config.release();
         select(device);
-        
+
         sigpath::sourceManager.registerSource("Audio", &handler);
     }
 
@@ -113,7 +113,7 @@ public:
             select(devices.key(0));
             return;
         }
-        
+
         // Get device info
         devId = devices.keyId(name);
         auto info = devices.value(devId).info;
@@ -173,7 +173,7 @@ private:
     static void start(void* ctx) {
         AudioSourceModule* _this = (AudioSourceModule*)ctx;
         if (_this->running) { return; }
-        
+
         // Stream options
         RtAudio::StreamParameters parameters;
         parameters.deviceId = _this->devices[_this->devId].id;
@@ -181,7 +181,7 @@ private:
         unsigned int bufferFrames = _this->sampleRate / 200;
         RtAudio::StreamOptions opts;
         opts.flags = RTAUDIO_MINIMIZE_LATENCY;
-        opts.streamName = "SDR++ Audio Source";
+        opts.streamName = "SISTA Audio Source";
 
         // Open and start stream
         try {
@@ -192,7 +192,7 @@ private:
         catch (std::exception e) {
             flog::error("Error opening audio device: {0}", e.what());
         }
-        
+
         flog::info("AudioSourceModule '{0}': Start!", _this->name);
     }
 
@@ -200,7 +200,7 @@ private:
         AudioSourceModule* _this = (AudioSourceModule*)ctx;
         if (!_this->running) { return; }
         _this->running = false;
-        
+
         _this->audio.stopStream();
         _this->audio.closeStream();
 
@@ -260,7 +260,7 @@ private:
     double sampleRate;
     SourceManager::SourceHandler handler;
     bool running = false;
-    
+
     OptionList<std::string, DeviceInfo> devices;
     OptionList<double, double> sampleRates;
     std::string selectedDevice = "";

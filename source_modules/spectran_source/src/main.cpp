@@ -15,7 +15,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "spectran_source",
-    /* Description:     */ "Spectran source module for SDR++",
+    /* Description:     */ "Spectran source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -162,7 +162,7 @@ public:
         // Sort list in ascending order
         std::sort(srs.begin(), srs.end(), [](SRCombo a, SRCombo b) {
             if (a.effective != b.effective) {
-                return a.effective < b.effective; 
+                return a.effective < b.effective;
             }
             else {
                 return a.baseId < b.baseId;
@@ -295,7 +295,7 @@ private:
         SpectranSourceModule* _this = (SpectranSourceModule*)ctx;
         if (!_this->running) { return; }
         _this->running = false;
-        
+
         _this->stream.stopWriter();
         AARTSAAPI_StopDevice(&_this->dev);
         AARTSAAPI_DisconnectDevice(&_this->dev);
@@ -329,7 +329,7 @@ private:
         SmGui::FillWidth();
         SmGui::ForceSync();
         if (SmGui::Combo(CONCAT("##_spectran_dev_", _this->name), &_this->devId, _this->devList.txt)) {
-            
+
         }
         // TODO: SR sel
         if (SmGui::Combo(CONCAT("##_spectran_sr_", _this->name), &_this->srId, _this->sampleRateList.txt)) {
@@ -367,7 +367,7 @@ private:
                 AARTSAAPI_ConfigSetString(&_this->dev, &config, _this->agcModeList[_this->agcModeId].c_str());
             }
         }
-        
+
         if (_this->agcModeId) { SmGui::BeginDisabled(); }
         SmGui::LeftLabel("Ref Level");
         SmGui::FillWidth();
@@ -489,7 +489,7 @@ private:
     SourceManager::SourceHandler handler;
     bool running = false;
     double freq;
-    
+
     std::string selectedSerial;
     int devId = 0;
     int srId = 0;

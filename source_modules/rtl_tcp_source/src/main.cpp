@@ -13,7 +13,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "rtl_tcp_source",
-    /* Description:     */ "RTL-TCP source module for SDR++",
+    /* Description:     */ "RTL-TCP source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 1, 1, 0,
     /* Max instances    */ 1
@@ -127,7 +127,7 @@ private:
     static void start(void* ctx) {
         RTLTCPSourceModule* _this = (RTLTCPSourceModule*)ctx;
         if (_this->running) { return; }
-        
+
         // Connect to the server
         try {
             _this->client = rtltcp::connect(&_this->stream, _this->ip, _this->port);
@@ -136,7 +136,7 @@ private:
             flog::error("Could connect to RTL-TCP server: {0}", e.what());
             return;
         }
-        
+
         // Sync settings
         _this->client->setFrequency(_this->freq);
         _this->client->setSampleRate(_this->sampleRate);

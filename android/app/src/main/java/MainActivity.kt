@@ -1,4 +1,4 @@
-package org.sdrpp.sdrpp;
+package org.sista.sista;
 
 import android.app.NativeActivity;
 import android.app.AlertDialog;
@@ -25,7 +25,7 @@ import androidx.core.content.PermissionChecker;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.io.*;
 
-private const val ACTION_USB_PERMISSION = "org.sdrpp.sdrpp.USB_PERMISSION";
+private const val ACTION_USB_PERMISSION = "org.sista.sista.USB_PERMISSION";
 
 private val usbReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -35,13 +35,13 @@ private val usbReceiver = object : BroadcastReceiver() {
                 _this.SDR_device = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE)
                 if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
                     _this.SDR_conn = _this.usbManager!!.openDevice(_this.SDR_device);
-                    
+
                     // Save SDR info
                     _this.SDR_VID = _this.SDR_device!!.getVendorId();
                     _this.SDR_PID = _this.SDR_device!!.getProductId()
                     _this.SDR_FD = _this.SDR_conn!!.getFileDescriptor();
                 }
-                
+
                 // Whatever the hell this does
                 context.unregisterReceiver(this);
 
@@ -53,7 +53,7 @@ private val usbReceiver = object : BroadcastReceiver() {
 }
 
 class MainActivity : NativeActivity() {
-    private val TAG : String = "SDR++";
+    private val TAG : String = "SISTA";
     public var usbManager : UsbManager? = null;
     public var SDR_device : UsbDevice? = null;
     public var SDR_conn : UsbDeviceConnection? = null;
@@ -157,7 +157,7 @@ class MainActivity : NativeActivity() {
 
             // Create local path if non-existent
             createIfDoesntExist(local);
-            
+
             // Create if directory
             val ext = extractDir(aman, lpath, rpath);
 

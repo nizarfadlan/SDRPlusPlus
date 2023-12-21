@@ -15,7 +15,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "hermes_source",
-    /* Description:     */ "Hermes Lite 2 source module for SDR++",
+    /* Description:     */ "Hermes Lite 2 source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -149,7 +149,7 @@ private:
     static void start(void* ctx) {
         HermesSourceModule* _this = (HermesSourceModule*)ctx;
         if (_this->running || _this->selectedMac.empty()) { return; }
-        
+
         // TODO: Implement start
         _this->dev = hermes::open(_this->devices[_this->devId].addr);
 
@@ -171,7 +171,7 @@ private:
         HermesSourceModule* _this = (HermesSourceModule*)ctx;
         if (!_this->running) { return; }
         _this->running = false;
-        
+
         // TODO: Implement stop
         _this->dev->stop();
         _this->dev->close();

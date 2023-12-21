@@ -24,7 +24,7 @@ namespace backend {
     EGLSurface _EglSurface = EGL_NO_SURFACE;
     EGLContext _EglContext = EGL_NO_CONTEXT;
     bool _Initialized = false;
-    char _LogTag[] = "SDR++";
+    char _LogTag[] = "SISTA";
     bool initialized = false;
     bool pauseRendering = false;
     bool exited = false;
@@ -211,7 +211,7 @@ namespace backend {
 
                 // Render
                 beginFrame();
-                
+
                 if (dsize.x > 0 && dsize.y > 0) {
                     ImGui::SetNextWindowPos(ImVec2(0, 0));
                     ImGui::SetNextWindowSize(ImVec2(dsize.x, dsize.y));
@@ -298,7 +298,7 @@ namespace backend {
         jfieldID fd_field_id = java_env->GetFieldID(native_activity_clazz, "SDR_FD", "I");
         jfieldID vid_field_id = java_env->GetFieldID(native_activity_clazz, "SDR_VID", "I");
         jfieldID pid_field_id = java_env->GetFieldID(native_activity_clazz, "SDR_PID", "I");
-        
+
         if (!vid_field_id || !vid_field_id || !pid_field_id)
             return -1;
 
@@ -390,7 +390,7 @@ namespace backend {
         if (jni_return != JNI_OK)
             throw std::runtime_error("Could not detach from thread");
 
-        
+
         return str;
     }
 

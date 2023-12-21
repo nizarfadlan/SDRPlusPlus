@@ -16,7 +16,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "rtl_sdr_source",
-    /* Description:     */ "RTL-SDR source module for SDR++",
+    /* Description:     */ "RTL-SDR source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -173,7 +173,7 @@ public:
 #else
         int oret = rtlsdr_open_fd(&openDev, devFd);
 #endif
-        
+
         if (oret < 0) {
             selectedDevName = "";
             flog::error("Could not open RTL-SDR: {0}", oret);
@@ -459,7 +459,7 @@ private:
             }
         }
 
-        
+
         if (_this->tunerAgc || _this->gainList.size() == 0) { SmGui::EndDisabled(); }
 
         if (SmGui::Checkbox(CONCAT("Bias T##_rtlsdr_rtl_biast_", _this->name), &_this->biasT)) {

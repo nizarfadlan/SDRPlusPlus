@@ -145,7 +145,7 @@ namespace server {
 
     void ClientClass::tcpHandler(int count, uint8_t* buf, void* ctx) {
         ClientClass* _this = (ClientClass*)ctx;
-        
+
         // Read the rest of the data (TODO: CHECK SIZE OR SHIT WILL BE FUCKED)
         int len = 0;
         int read = 0;
@@ -153,12 +153,12 @@ namespace server {
         while (len < goal) {
             read = _this->client->read(goal - len, &buf[sizeof(PacketHeader) + len]);
             if (read < 0) {
-                return; 
+                return;
             };
             len += read;
         }
         _this->bytes += _this->r_pkt_hdr->size;
-        
+
         if (_this->r_pkt_hdr->type == PACKET_TYPE_COMMAND) {
             // TODO: Move to command handler
             if (_this->r_cmd_hdr->cmd == COMMAND_SET_SAMPLERATE && _this->r_pkt_hdr->size == sizeof(PacketHeader) + sizeof(CommandHeader) + sizeof(double)) {
@@ -207,7 +207,7 @@ namespace server {
             if (outCount) { _this->decompIn.swap(outCount); };
         }
         else if (_this->r_pkt_hdr->type == PACKET_TYPE_ERROR) {
-            flog::error("SDR++ Server Error: {0}", buf[sizeof(PacketHeader)]);
+            flog::error("SISTA Server Error: {0}", buf[sizeof(PacketHeader)]);
         }
         else {
             flog::error("Invalid packet type: {0}", _this->r_pkt_hdr->type);

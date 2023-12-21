@@ -15,7 +15,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "spyserver_source",
-    /* Description:     */ "SpyServer source module for SDR++",
+    /* Description:     */ "SpyServer source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -120,7 +120,7 @@ private:
     static void start(void* ctx) {
         SpyServerSourceModule* _this = (SpyServerSourceModule*)ctx;
         if (_this->running) { return; }
-        
+
         // Try to connect if not already connected
         if (!_this->client) {
             _this->tryConnect();

@@ -6,11 +6,11 @@ void CommandArgsParser::defineAll() {
         std::string root = ".";
         define('c', "con", "Show console on Windows");
 #elif defined(IS_MACOS_BUNDLE)
-        std::string root = (std::string)getenv("HOME") + "/Library/Application Support/sdrpp";
+        std::string root = (std::string)getenv("HOME") + "/Library/Application Support/sista";
 #elif defined(__ANDROID__)
-        std::string root = "/storage/self/primary/sdrpp";
+        std::string root = "/storage/self/primary/sista";
 #else
-        std::string root = (std::string)getenv("HOME") + "/.config/sdrpp";
+        std::string root = (std::string)getenv("HOME") + "/.config/sista";
 #endif
 
         define('a', "addr", "Server mode address", "0.0.0.0");
@@ -24,7 +24,7 @@ void CommandArgsParser::defineAll() {
 int CommandArgsParser::parse(int argc, char* argv[]) {
     for (int i = 1; i < argc; i++) {
         std::string arg = argv[i];
-        
+
         // Check for long and short name arguments
         if (!arg.rfind("--", 0)) {
             arg = arg.substr(2);
@@ -52,7 +52,7 @@ int CommandArgsParser::parse(int argc, char* argv[]) {
 
         // Parse depending on type
         CLIArg& carg = args[arg];
-        
+
         // If not void, make sure an argument is available and retrieve it
         if (carg.type != CLI_ARG_TYPE_VOID && i + 1 >= argc) {
             printf("Missing argument\n");

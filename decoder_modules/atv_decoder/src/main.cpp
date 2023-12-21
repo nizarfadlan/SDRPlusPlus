@@ -14,7 +14,7 @@
 #define CONCAT(a, b) ((std::string(a) + b).c_str())
 
 SDRPP_MOD_INFO{/* Name:            */ "atv_decoder",
-               /* Description:     */ "ATV decoder for SDR++",
+               /* Description:     */ "ATV decoder for SISTA",
                /* Author:          */ "Ryzerth",
                /* Version:         */ 0, 1, 0,
                /* Max instances    */ -1};

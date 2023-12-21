@@ -13,7 +13,7 @@ endif (USE_BUNDLE_DEFAULTS)
 file(GLOB_RECURSE SRC "src/*.cpp" "src/*.c")
 
 add_definitions(-DSDRPP_IS_CORE)
-add_definitions(-DFLOG_ANDROID_TAG="SDR++")
+add_definitions(-DFLOG_ANDROID_TAG="SISTA")
 if (MSVC)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif ()
@@ -132,7 +132,7 @@ else()
         ${VOLK_INCLUDE_DIRS}
         ${LIBZSTD_INCLUDE_DIRS}
     )
-    
+
     target_link_directories(sdrpp_core PUBLIC
         ${OPENGL_LIBRARY_DIRS}
         ${FFTW3_LIBRARY_DIRS}

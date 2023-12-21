@@ -19,7 +19,7 @@ bundle_create_struct $BUNDLE
 cp -R root/res/* $BUNDLE/Contents/Resources/
 
 # Create the icon file
-bundle_create_icns root/res/icons/sdrpp.macos.png $BUNDLE/Contents/Resources/sdrpp
+bundle_create_icns root/res/icons/sdrpp.macos.png $BUNDLE/Contents/Resources/sista
 
 # Create the property list
 bundle_create_plist sista SISTA org.sista.sista 1.1.0 sdrp sista sista $BUNDLE/Contents/Info.plist
@@ -27,7 +27,7 @@ bundle_create_plist sista SISTA org.sista.sista 1.1.0 sdrp sista sista $BUNDLE/C
 # ========================= Install binaries =========================
 
 # Core
-bundle_install_binary $BUNDLE $BUNDLE/Contents/MacOS $BUILD_DIR/sdrpp
+bundle_install_binary $BUNDLE $BUNDLE/Contents/MacOS $BUILD_DIR/sista
 bundle_install_binary $BUNDLE $BUNDLE/Contents/Frameworks $BUILD_DIR/core/libsdrpp_core.dylib
 
 # Source modules

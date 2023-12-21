@@ -14,7 +14,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "audio_sink",
-    /* Description:     */ "Android audio sink module for SDR++",
+    /* Description:     */ "Android audio sink module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -74,7 +74,7 @@ private:
         AAudioStreamBuilder_setBufferCapacityInFrames(builder, bufferSize);
         AAudioStreamBuilder_setErrorCallback(builder, errorCallback, this);
         packer.setSampleCount(bufferSize);
-        
+
         // Open the stream
         AAudioStreamBuilder_openStream(builder, &stream);
 

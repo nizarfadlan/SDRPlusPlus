@@ -14,7 +14,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "perseus_source",
-    /* Description:     */ "Perseus SDR source module for SDR++",
+    /* Description:     */ "Perseus SDR source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -123,7 +123,7 @@ public:
 
     void select(const std::string& serial) {
         // If there are no devices, give up
-        if (devList.empty()) { 
+        if (devList.empty()) {
             selectedSerial.clear();
             return;
         }
@@ -249,7 +249,7 @@ private:
             flog::error("No device is selected");
             return;
         }
-        
+
         // Open device
         _this->openDev = perseus_open(_this->selectedPerseusId);
         if (!_this->openDev) {

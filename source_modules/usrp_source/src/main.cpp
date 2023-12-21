@@ -16,7 +16,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "usrp_source",
-    /* Description:     */ "USRP source module for SDR++",
+    /* Description:     */ "USRP source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -172,7 +172,7 @@ public:
             name[0] = std::toupper(name[0]);
             clockSources.define(s, name, s);
         }
-        
+
         // Load settings
         srId = 0;
         antId = 0;
@@ -281,7 +281,7 @@ private:
         _this->dev->set_rx_freq(_this->freq, _this->chanId);
         _this->dev->set_clock_source(_this->clockSources.key(_this->csId));
         _this->setBandwidth(_this->bandwidths[_this->bwId]);
-        
+
         uhd::stream_args_t sargs;
         sargs.channels.clear();
         sargs.channels.push_back(_this->chanId);
@@ -289,7 +289,7 @@ private:
         sargs.otw_format = "sc16";
         _this->streamer = _this->dev->get_rx_stream(sargs);
         _this->streamer->issue_stream_cmd(uhd::stream_cmd_t::STREAM_MODE_START_CONTINUOUS);
-        
+
         _this->stream.clearWriteStop();
         _this->workerThread = std::thread(&USRPSourceModule::worker, _this);
 
@@ -301,12 +301,12 @@ private:
         USRPSourceModule* _this = (USRPSourceModule*)ctx;
         if (!_this->running) { return; }
         _this->running = false;
-        
+
         _this->stream.stopWriter();
         _this->streamer->issue_stream_cmd(uhd::stream_cmd_t::STREAM_MODE_STOP_CONTINUOUS);
         if (_this->workerThread.joinable()) { _this->workerThread.join(); }
         _this->stream.clearWriteStop();
-        
+
         _this->streamer.reset();
         _this->dev.reset();
 

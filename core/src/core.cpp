@@ -41,11 +41,11 @@ namespace core {
     void setInputSampleRate(double samplerate) {
         // Forward this to the server
         if (args["server"].b()) { server::setInputSampleRate(samplerate); return; }
-        
+
         // Update IQ frontend input samplerate and get effective samplerate
         sigpath::iqFrontEnd.setSampleRate(samplerate);
         double effectiveSr  = sigpath::iqFrontEnd.getEffectiveSamplerate();
-        
+
         // Reset zoom
         gui::waterfall.setBandwidth(effectiveSr);
         gui::waterfall.setViewOffset(0);
@@ -59,7 +59,7 @@ namespace core {
 
 // main
 int sdrpp_main(int argc, char* argv[]) {
-    flog::info("SDR++ v" VERSION_STR);
+    flog::info("SATUAN INTELEJEN TEKNIK v" VERSION_STR);
 
 #ifdef IS_MACOS_BUNDLE
     // If this is a MacOS .app, CD to the correct directory
@@ -69,7 +69,7 @@ int sdrpp_main(int argc, char* argv[]) {
 
     // Define command line options and parse arguments
     core::args.defineAll();
-    if (core::args.parse(argc, argv) < 0) { return -1; } 
+    if (core::args.parse(argc, argv) < 0) { return -1; }
 
     // Show help and exit if requested
     if (core::args["help"].b()) {
@@ -258,8 +258,8 @@ int sdrpp_main(int argc, char* argv[]) {
     defConfig["modulesDirectory"] = root + "/modules";
     defConfig["resourcesDirectory"] = root + "/res";
 #else
-    defConfig["modulesDirectory"] = INSTALL_PREFIX "/lib/sdrpp/plugins";
-    defConfig["resourcesDirectory"] = INSTALL_PREFIX "/share/sdrpp";
+    defConfig["modulesDirectory"] = INSTALL_PREFIX "/lib/sista/plugins";
+    defConfig["resourcesDirectory"] = INSTALL_PREFIX "/share/sista";
 #endif
 
     // Load config

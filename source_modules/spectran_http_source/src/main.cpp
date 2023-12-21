@@ -14,7 +14,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "spectran_http_source",
-    /* Description:     */ "Spectran V6 HTTP source module for SDR++",
+    /* Description:     */ "Spectran V6 HTTP source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -94,7 +94,7 @@ private:
         SpectranHTTPSourceModule* _this = (SpectranHTTPSourceModule*)ctx;
         if (!_this->running) { return; }
         _this->running = false;
-        
+
         // TODO: Implement stop
         _this->client->streaming(false);
 

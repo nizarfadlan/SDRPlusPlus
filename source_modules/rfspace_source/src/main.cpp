@@ -15,7 +15,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "rfspace_source",
-    /* Description:     */ "RFspace source module for SDR++",
+    /* Description:     */ "RFspace source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -173,7 +173,7 @@ private:
                 _this->sampleRate = _this->sampleRates[_this->srId];
                 _this->client->setSampleRate(_this->sampleRate);
                 core::setInputSampleRate(_this->sampleRate);
-                
+
                 config.acquire();
                 config.conf["devices"][_this->devConfName]["sampleRate"] = _this->sampleRates.key(_this->srId);
                 config.release(true);
@@ -229,14 +229,14 @@ private:
         else {
             deviceName = "Unknown";
         }
-        
+
         // Create samplerate list
         auto srs = client->getValidSampleRates();
         sampleRates.clear();
         for (auto& sr : srs) {
             sampleRates.define(sr, getBandwdithScaled(sr), sr);
         }
-        
+
         // Create RF port list
         rfPorts.clear();
         rfPorts.define("Port 1", rfspace::RFSPACE_RF_PORT_1);

@@ -13,7 +13,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "sdrplay_source",
-    /* Description:     */ "SDRplay source module for SDR++",
+    /* Description:     */ "SDRplay source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -1008,7 +1008,7 @@ private:
             SmGui::Checkbox(CONCAT("MW/FM Notch##sdrplay_rsp2_fmmwnotch", name), &dummy);
             style::endDisabled();
         }
-        
+
         if (SmGui::Checkbox(CONCAT("Bias-T##sdrplay_rsp2_biast", name), &rsp2_biasT)) {
             if (running) {
                 channelParams->rsp2TunerParams.biasTEnable = rsp2_biasT;

@@ -15,7 +15,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "sdrpp_server_source",
-    /* Description:     */ "SDR++ Server source module for SDR++",
+    /* Description:     */ "SISTA Server source module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -53,12 +53,12 @@ public:
         port = config.conf["port"];
         config.release();
 
-        sigpath::sourceManager.registerSource("SDR++ Server", &handler);
+        sigpath::sourceManager.registerSource("SISTA Server", &handler);
     }
 
     ~SDRPPServerSourceModule() {
         stop(this);
-        sigpath::sourceManager.unregisterSource("SDR++ Server");
+        sigpath::sourceManager.unregisterSource("SISTA Server");
     }
 
     void postInit() {}
@@ -189,7 +189,7 @@ private:
                 config.conf["servers"][_this->devConfName]["sampleType"] = _this->sampleTypeList.key(_this->sampleTypeId);
                 config.release(true);
             }
-            
+
             if (ImGui::Checkbox("Compression", &_this->compression)) {
                 _this->client->setCompression(_this->compression);
 
@@ -263,7 +263,7 @@ private:
     std::string name;
     bool enabled = true;
     bool running = false;
-    
+
     double freq;
     bool serverBusy = false;
 

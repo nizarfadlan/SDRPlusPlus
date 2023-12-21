@@ -6,7 +6,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "scanner",
-    /* Description:     */ "Frequency scanner for SDR++",
+    /* Description:     */ "Frequency scanner for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 1, 0,
     /* Max instances    */ 1
@@ -42,7 +42,7 @@ private:
     static void menuHandler(void* ctx) {
         ScannerModule* _this = (ScannerModule*)ctx;
         float menuWidth = ImGui::GetContentRegionAvail().x;
-        
+
         if (_this->running) { ImGui::BeginDisabled(); }
         ImGui::LeftLabel("Start");
         ImGui::SetNextItemWidth(menuWidth - ImGui::GetCursorPosX());
@@ -175,7 +175,7 @@ private:
 
                 if (receiving) {
                     flog::warn("Receiving");
-                
+
                     float maxLevel = getMaxLevel(data, current, vfoWidth, dataWidth, wfStart, wfWidth);
                     if (maxLevel >= level) {
                         lastSignalTime = now;
@@ -188,13 +188,13 @@ private:
                     flog::warn("Seeking signal");
                     double bottomLimit = current;
                     double topLimit = current;
-                    
+
                     // Search for a signal in scan direction
                     if (findSignal(scanUp, bottomLimit, topLimit, wfStart, wfEnd, wfWidth, vfoWidth, data, dataWidth)) {
                         gui::waterfall.releaseLatestFFT();
                         continue;
                     }
-                    
+
                     // Search for signal in the inverse scan direction if direction isn't enforced
                     if (!reverseLock) {
                         if (findSignal(!scanUp, bottomLimit, topLimit, wfStart, wfEnd, wfWidth, vfoWidth, data, dataWidth)) {
@@ -203,7 +203,7 @@ private:
                         }
                     }
                     else { reverseLock = false; }
-                    
+
 
                     // There is no signal on the visible spectrum, tune in scan direction and retry
                     if (scanUp) {
@@ -241,7 +241,7 @@ private:
 
             if (freq < bottomLimit) { bottomLimit = freq; }
             if (freq > topLimit) { topLimit = freq; }
-            
+
             // Check signal level
             float maxLevel = getMaxLevel(data, freq, vfoWidth * (passbandRatio * 0.01f), dataWidth, wfStart, wfWidth);
             if (maxLevel >= level) {
@@ -268,7 +268,7 @@ private:
 
     std::string name;
     bool enabled = true;
-    
+
     bool running = false;
     //std::string selectedVFO = "Radio";
     double startFreq = 88000000.0;

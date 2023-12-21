@@ -1,4 +1,4 @@
-package org.sdrpp.sdrpp;
+package org.sista.sista;
 
 import android.app.NativeActivity;
 import android.app.AlertDialog;
@@ -27,6 +27,6 @@ import java.io.*;
 
 class DeviceManager {
     public fun init() {
-        
+
     }
 }

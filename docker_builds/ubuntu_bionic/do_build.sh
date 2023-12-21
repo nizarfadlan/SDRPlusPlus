@@ -62,7 +62,7 @@ echo 'Version: 0.7' >> /usr/share/pkgconfig/codec2.pc
 echo 'Libs: -L/usr/include/x86_64-linux-gnu/ -lcodec2' >> /usr/share/pkgconfig/codec2.pc
 echo 'Cflags: -I/usr/include/codec2' >> /usr/share/pkgconfig/codec2.pc
 
-# Build SDR++ Itself
+# Build SISTA Itself
 cd SDRPlusPlus
 mkdir build
 cd build

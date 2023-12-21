@@ -29,7 +29,7 @@
 
 SDRPP_MOD_INFO{
     /* Name:            */ "recorder",
-    /* Description:     */ "Recorder module for SDR++",
+    /* Description:     */ "Recorder module for SISTA",
     /* Author:          */ "Ryzerth",
     /* Version:         */ 0, 3, 0,
     /* Max instances    */ -1
@@ -179,7 +179,7 @@ public:
 
         // Open audio stream or baseband
         if (recMode == RECORDER_MODE_AUDIO) {
-            // Start correct path depending on 
+            // Start correct path depending on
             if (stereo) {
                 stereoSink.start();
             }
@@ -210,7 +210,7 @@ public:
             monoSink.stop();
             stereoSink.stop();
             s2m.stop();
-            
+
         }
         else {
             // Unbind and destroy IQ stream
@@ -221,7 +221,7 @@ public:
 
         // Close file
         writer.close();
-        
+
         recording = false;
     }
 
@@ -402,7 +402,7 @@ private:
         // Add new stream to the list
         _this->audioStreams.define(name, name, name);
 
-        // If no stream is selected, select new stream. If not, update the menu ID. 
+        // If no stream is selected, select new stream. If not, update the menu ID.
         if (_this->selectedStreamName.empty()) {
             _this->selectStream(name);
         }
